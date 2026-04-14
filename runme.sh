@@ -43,11 +43,6 @@ echo "> ./create_A.sh"
 ./create_A.sh
 echo >> "$REPORT"
 
-echo "Сжатие файлов A и B gzip'ом." | tee -a "$REPORT"
-echo "> gzip -k A B" >> "$REPORT"
-gzip -k A B
-echo >> "$REPORT"
-
 echo "Тест 1: Копирование A -> B (sparse)" | tee -a "$REPORT"
 echo "Ожидаемый результат: B - разреженный файл, занимающий меньше места на диске." | tee -a "$REPORT"
 echo "> ./sparcify A B" >> "$REPORT"
@@ -58,6 +53,11 @@ stat B | head -n 2 | tee -a "$REPORT"
 
 md5sum A B | tee -a "$REPORT"
 
+echo >> "$REPORT"
+
+echo "Сжатие файлов A и B gzip'ом." | tee -a "$REPORT"
+echo "> gzip -k A B" >> "$REPORT"
+gzip -k A B
 echo >> "$REPORT"
 
 echo "Тест 2: Распаковка B.gz и разрежение" | tee -a "$REPORT"
