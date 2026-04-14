@@ -53,3 +53,11 @@ dkms.conf
 
 # debug information files
 *.dwo
+
+A
+A.gz
+B
+B.gz
+C
+D
+sparcify
